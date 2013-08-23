@@ -212,6 +212,16 @@ Image generation is done by [LoremPixel](http://lorempixel.com/.  Common params 
 * $width/$height - Integer width and heigh values for the image you want generated
 * $category - May be 'abstract', 'animals','business','cats','city','food','nightlife','fashion','people','nature','sports','technics','transport'.  Singular forms of all are supported as well.
 
+## Optional data
+
+All formatters can be made optional by chaining `optional`.  When optional, the formatter will randomly return `NULL`, which can be useful for seeding non-required fields.  For example:
+
+    $faker->optional->country
+    
+You can skew the randomization towards more nulls or less by passing an argument to `optional()`.  At 0, *only* `NULL` is returned.  At 1, it is never returned.
+
+    $faker->optional(.75)->country
+
 ## Localization
 
 `Faker\Factory` can take a locale as an argument, to return localized data. If no localized provider is found, the factory fallbacks to the default locale (en_EN).
